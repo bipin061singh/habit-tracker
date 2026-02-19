@@ -74,7 +74,19 @@ function App() {
 
       <div className="stats">
         <p>{completedToday} of {totalHabits} completed today</p>
-      </div>
+      <button
+          className="delete-btn"
+          onClick={() => {
+            if (window.confirm('Delete all habits?')) {
+              setHabits([]);
+              localStorage.removeItem('habit-tracker-data');
+            }
+          }}
+          style={{ marginTop: '1rem', width: '100%' }}
+        >
+          Delete All Habits
+        </button>
+    </div>
 
       <div className="progress-bar" style={{
           width: '100%',
@@ -90,7 +102,19 @@ function App() {
             background: completedToday === totalHabits ? '#4ade80' : '#667eea',
             transition: 'width 0.3s ease'
           }} />
-        </div>
+        <button
+          className="delete-btn"
+          onClick={() => {
+            if (window.confirm('Delete all habits?')) {
+              setHabits([]);
+              localStorage.removeItem('habit-tracker-data');
+            }
+          }}
+          style={{ marginTop: '1rem', width: '100%' }}
+        >
+          Delete All Habits
+        </button>
+    </div>
       <form className="add-habit-form" onSubmit={addHabit}>
         <input
           type="text"
@@ -124,7 +148,19 @@ function App() {
                     🔥 {habit.streak} day streak
                   </span>
                 )}
-              </div>
+              <button
+          className="delete-btn"
+          onClick={() => {
+            if (window.confirm('Delete all habits?')) {
+              setHabits([]);
+              localStorage.removeItem('habit-tracker-data');
+            }
+          }}
+          style={{ marginTop: '1rem', width: '100%' }}
+        >
+          Delete All Habits
+        </button>
+    </div>
               <button
                 className="delete-btn"
                 onClick={() => deleteHabit(habit.id)}
@@ -136,6 +172,18 @@ function App() {
           ))}
         </ul>
       )}
+    <button
+          className="delete-btn"
+          onClick={() => {
+            if (window.confirm('Delete all habits?')) {
+              setHabits([]);
+              localStorage.removeItem('habit-tracker-data');
+            }
+          }}
+          style={{ marginTop: '1rem', width: '100%' }}
+        >
+          Delete All Habits
+        </button>
     </div>
   );
 }
