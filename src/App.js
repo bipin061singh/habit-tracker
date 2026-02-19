@@ -115,6 +115,21 @@ function App() {
           Delete All Habits
         </button>
     </div>
+      <div className="progress-bar" style={{
+          width: '100%',
+          height: '10px',
+          background: '#e0e0e0',
+          borderRadius: '5px',
+          marginBottom: '1rem',
+          overflow: 'hidden'
+        }}>
+          <div style={{
+            width: `${totalHabits > 0 ? (completedToday / totalHabits * 100) : 0}%`,
+            height: '100%',
+            background: completedToday === totalHabits ? '#4ade80' : '#667eea',
+            transition: 'width 0.3s ease'
+          }} />
+        </div>
       <form className="add-habit-form" onSubmit={addHabit}>
         <input
           type="text"
