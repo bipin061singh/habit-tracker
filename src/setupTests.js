@@ -8,6 +8,9 @@ const localStorageMock = {
   clear: jest.fn(),
 };
 
+// Expose the mock globally so individual test files can adjust it per-test
+global.localStorageMock = localStorageMock;
+
 Object.defineProperty(global, 'localStorage', {
   value: localStorageMock,
   writable: true,

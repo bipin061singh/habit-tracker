@@ -2,27 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import App from './App';
 
-// Mock localStorage with proper override
-const localStorageMock = {
-  getItem: jest.fn(() => null),
-  setItem: jest.fn(),
-  removeItem: jest.fn(),
-  clear: jest.fn(),
-};
-
-Object.defineProperty(global, 'localStorage', {
-  value: localStorageMock,
-  writable: true,
-});
-
 describe('Habit Tracker App', () => {
-  beforeEach(() => {
-    // Reset localStorage mock before each test
-    localStorageMock.getItem.mockReturnValue(null);
-    localStorageMock.setItem.mockClear();
-    localStorageMock.removeItem.mockClear();
-  });
-
   afterEach(() => {
     cleanup();
     document.body.innerHTML = '';
@@ -146,7 +126,7 @@ describe('Habit Tracker App', () => {
     });
 
     await waitFor(() => {
-      expect(localStorageMock.setItem).toHaveBeenCalledWith(
+      expect(global.localStorageMock.setItem).toHaveBeenCalledWith(
         'habit-tracker-data',
         expect.any(String)
       );
@@ -163,7 +143,7 @@ describe('Habit Tracker App', () => {
         history: []
       }
     ]);
-    localStorageMock.getItem.mockReturnValue(savedHabits);
+    global.localStorageMock.getItem.mockReturnValue(savedHabits);
 
     render(<App />);
 
