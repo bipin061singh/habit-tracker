@@ -31,7 +31,7 @@ describe('Habit Tracker App', () => {
   test('adds a new habit', () => {
     render(<App />);
     const input = screen.getByPlaceholderText(/Enter a new habit/i);
-    const addButton = screen.getByText(/Add/i);
+    const addButton = screen.getByRole('button', { name: /Add/i });
 
     fireEvent.change(input, { target: { value: 'Exercise daily' } });
     fireEvent.click(addButton);
@@ -41,7 +41,7 @@ describe('Habit Tracker App', () => {
 
   test('does not add empty habit', () => {
     render(<App />);
-    const addButton = screen.getByText(/Add/i);
+    const addButton = screen.getByRole('button', { name: /Add/i });
 
     fireEvent.click(addButton);
 
@@ -52,7 +52,7 @@ describe('Habit Tracker App', () => {
   test('toggles habit completion', () => {
     render(<App />);
     const input = screen.getByPlaceholderText(/Enter a new habit/i);
-    const addButton = screen.getByText(/Add/i);
+    const addButton = screen.getByRole('button', { name: /Add/i });
 
     fireEvent.change(input, { target: { value: 'Read books' } });
     fireEvent.click(addButton);
@@ -66,7 +66,7 @@ describe('Habit Tracker App', () => {
   test('deletes a habit', () => {
     render(<App />);
     const input = screen.getByPlaceholderText(/Enter a new habit/i);
-    const addButton = screen.getByText(/Add/i);
+    const addButton = screen.getByRole('button', { name: /Add/i });
 
     fireEvent.change(input, { target: { value: 'Meditate' } });
     fireEvent.click(addButton);
@@ -80,7 +80,7 @@ describe('Habit Tracker App', () => {
   test('shows streak count after completing habit', () => {
     render(<App />);
     const input = screen.getByPlaceholderText(/Enter a new habit/i);
-    const addButton = screen.getByText(/Add/i);
+    const addButton = screen.getByRole('button', { name: /Add/i });
 
     fireEvent.change(input, { target: { value: 'Drink water' } });
     fireEvent.click(addButton);
@@ -94,7 +94,7 @@ describe('Habit Tracker App', () => {
   test('saves habits to localStorage', () => {
     render(<App />);
     const input = screen.getByPlaceholderText(/Enter a new habit/i);
-    const addButton = screen.getByText(/Add/i);
+    const addButton = screen.getByRole('button', { name: /Add/i });
 
     fireEvent.change(input, { target: { value: 'Test habit' } });
     fireEvent.click(addButton);
@@ -119,6 +119,8 @@ describe('Habit Tracker App', () => {
 
     render(<App />);
 
+    // Wait for state to update after render
+    // The habit should be in the list
     expect(screen.getByText(/Saved habit/i)).toBeInTheDocument();
   });
 });

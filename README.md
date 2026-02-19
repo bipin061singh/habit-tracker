@@ -3,7 +3,7 @@
 A minimal habit tracking application built with React.
 
 ## Features
-- Add and track daily habits
+- ✅ Add and track daily habits
 - Mark habits as complete
 - View habit streaks
 - Simple, clean UI
