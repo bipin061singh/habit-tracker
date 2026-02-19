@@ -2,6 +2,7 @@
   "name": "habit-tracker",
   "version": "1.0.0",
   "description": "A simple habit tracking app built with React",
+  "homepage": "https://bipin061singh.github.io/habit-tracker",
   "main": "src/index.js",
   "scripts": {
     "start": "react-scripts start",
